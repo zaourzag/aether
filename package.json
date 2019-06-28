@@ -1,8 +1,8 @@
 {
   "type": "module", 
   "name": "aether",
-  "version": "0.0.1",
-  "description": "The backend service for handling aero's shards",
+  "version": "1.0.0",
+  "description": "The backend service for handling Aero's shards",
   "main": "src/index",
   "repository": "git+https://github.com/aerodiscord/aether.git",
   "author": "The Aero Team <aero@farfrom.earth> (farfrom.earth)",
