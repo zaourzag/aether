@@ -1,5 +1,5 @@
 {
-  "type": "module", 
+  "type": "module",
   "name": "aether",
   "version": "1.0.0",
   "description": "The backend service for handling Aero's shards",
@@ -12,5 +12,19 @@
     "Rxsto <rxsto@farfrom.social>  (https://rxsto.farfrom.social)",
     "Stu <stu@farfrom.social> (https://stu.farfrom.social)"
   ],
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "dev": "node .",
+    "start": "NODE_ENV=production node .",
+    "lint": "eslint --fix --ext .js . --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-aero": "git+https://git.farfrom.earth/aero/forks/eslint-config-aero.git"
+  },
+  "dependencies": {
+    "centra": "git+https://git.farfrom.earth/aero/forks/centra.git",
+    "dotenv": "^8.0.0",
+    "ws": "^7.0.1"
+  }
 }

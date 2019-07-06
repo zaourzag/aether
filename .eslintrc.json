@@ -1,0 +1,6 @@
+{
+	"extends": "aero",
+	"rules": {
+		"lines-around-comment": "off"
+	}
+}

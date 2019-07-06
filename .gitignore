@@ -1,0 +1,7 @@
+node_modules
+.vscode
+config.json
+*.log
+.idea
+yarn.lock
+.env*
