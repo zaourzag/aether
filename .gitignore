@@ -4,4 +4,4 @@ config.json
 *.log
 .idea
 yarn.lock
-.env*
+*.env
