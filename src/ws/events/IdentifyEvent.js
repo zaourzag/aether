@@ -10,10 +10,12 @@ class IdentifyEvent extends Event {
 	run(data, socket) {
 		console.log(`[SHARD ${data.id}] Identified`);
 		socket.identified = true;
+
 		this.client.ws.store.set(data.id, socket);
 		this.client.ws.queue.push({ id: data.id, socket });
+
 		if (this.client.ws.store.size === this.client.total) {
-			console.log(`All shards identified, initiating launch ...`);
+			console.log('[Websocket] Initiating launch ...');
 			this.client.launch();
 		}
 	}
