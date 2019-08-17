@@ -26,8 +26,6 @@ class IdentifyEvent extends Event {
 			this.client.ws.queue.push({ id: data.id, socket });
 		}
 
-		console.log(this.client.ws.store.size, this.client.total, this.client.ws.queue.length);
-
 		if (this.client.ws.store.size === this.client.total && this.client.ws.queue.length !== 0) {
 			this.client.log.info('All registered shards have been identified! Initiating global launch ...');
 			this.client.launch();
