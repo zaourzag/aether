@@ -8,14 +8,26 @@ class IdentifyEvent extends Event {
 	}
 
 	run(data, socket) {
-		console.log(`[SHARD ${data.id}] Identified`);
+		if (data.ready) {
+			this.client.log.info(`Shard ${data.id} reconnected and was identified whilst already being ready!`);
+		} else {
+			this.client.log.info(`Shard ${data.id} was successfully identified!`);
+		}
+
 		socket.identified = true;
 
-		this.client.ws.store.set(data.id, socket);
-		this.client.ws.queue.push({ id: data.id, socket });
+		if (this.client.ws.store.has(data.id)) {
+			this.client.log.warn(`Shard ${data.id} was already registered! Overwriting socket ...`);
+		}
 
-		if (this.client.ws.store.size === this.client.total) {
-			console.log('[Websocket] Initiating launch ...');
+		this.client.ws.store.set(data.id, socket);
+
+		if (!data.ready) {
+			this.client.ws.queue.push({ id: data.id, socket });
+		}
+
+		if (this.client.ws.store.size === this.client.total && this.client.ws.queue.length !== 0) {
+			this.client.log.info('All registered shards have been identified! Initiating global launch ...');
 			this.client.launch();
 		}
 	}
