@@ -8,6 +8,7 @@ class ReconnectEvent extends Event {
 	}
 
 	run(data, socket) {
+		this.client.log.info(`Shard ${data.id} successfully reconnected !`);
 		console.log(`[SHARD ${data.id}] Reconnected`);
 		socket.identified = true;
 		this.client.ws.store.set(data.id, socket);

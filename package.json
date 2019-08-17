@@ -19,12 +19,13 @@
     "lint": "eslint --fix --ext .js . --ignore-path .gitignore"
   },
   "devDependencies": {
-    "eslint": "^6.0.1",
+    "eslint": "^6.1.0",
     "eslint-config-aero": "git+https://git.farfrom.earth/aero/forks/eslint-config-aero.git"
   },
   "dependencies": {
     "centra": "git+https://git.farfrom.earth/aero/forks/centra.git",
     "dotenv": "^8.0.0",
-    "ws": "^7.0.1"
+    "winston": "^3.2.1",
+    "ws": "^7.1.2"
   }
 }
