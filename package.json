@@ -1,5 +1,5 @@
 {
-  "type": "module",
+  "type": "commonjs",
   "name": "aether",
   "version": "1.0.0",
   "description": "The backend service for handling Aero's shards",
