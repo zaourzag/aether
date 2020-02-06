@@ -10,12 +10,13 @@ class ReadyEvent extends Event {
 	}
 
 	run(data) {
-		this.client.log.info(`Shard ${data.id} successfully became ready!`);
+		this.client.log.info(`<<< Received ready event from shard ${data.id}.`);
 		const shard = this.client.ws.queue.shift();
 		if (typeof shard !== 'undefined') {
+			this.client.log.info(`>>> Sending launch event to shard ${shard.id}.`);
 			shard.socket.send(MessageUtil.encode(new Message(LAUNCH_CLIENT, { shardCount: this.client.total })));
 		} else {
-			this.client.log.info('All registered shards are ready!');
+			this.client.log.info('<<< Received ready event from all shards.');
 		}
 	}
 

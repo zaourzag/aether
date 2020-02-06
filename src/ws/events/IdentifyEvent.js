@@ -9,15 +9,15 @@ class IdentifyEvent extends Event {
 
 	run(data, socket) {
 		if (data.ready) {
-			this.client.log.info(`Shard ${data.id} reconnected and was identified whilst already being ready!`);
+			this.client.log.info(`<<< Received identify event from shard ${data.id} as reconnection.`);
 		} else {
-			this.client.log.info(`Shard ${data.id} was successfully identified!`);
+			this.client.log.info(`<<< Received identify event from shard ${data.id}.`);
 		}
 
 		socket.identified = true;
 
 		if (this.client.ws.store.has(data.id)) {
-			this.client.log.warn(`Shard ${data.id} was already registered! Overwriting socket ...`);
+			this.client.log.warn(`Shard ${data.id} was already registered, socket overwritten.`);
 		}
 
 		this.client.ws.store.set(data.id, socket);
@@ -27,7 +27,7 @@ class IdentifyEvent extends Event {
 		}
 
 		if (this.client.ws.store.size === this.client.total && this.client.ws.queue.length !== 0) {
-			this.client.log.info('All registered shards have been identified! Initiating global launch ...');
+			this.client.log.info('Attempting to launch all shards.');
 			this.client.launch();
 		}
 	}
